@@ -26,14 +26,16 @@ done
 echo
 
 # File Format Prompt
-echo "Which ESLint and Prettier configuration format do you prefer?"
-select config_extension in ".js" ".json" "Cancel"; do
-  case $config_extension in
-    .js ) config_opening='module.exports = {'; break;;
-    .json ) config_opening='{'; break;;
-    Cancel ) exit;;
-  esac
-done
+# echo "Which ESLint and Prettier configuration format do you prefer?"
+# select config_extension in ".js" ".json" "Cancel"; do
+#   case $config_extension in
+#     .js ) config_opening='module.exports = {'; break;;
+#     .json ) config_opening='{'; break;;
+#     Cancel ) exit;;
+#   esac
+# done
+config_opening='{';
+
 echo
 
 # Checks for existing eslintrc files
@@ -64,15 +66,15 @@ while ! $finished; do
 done
 
 # Trailing Commas Prompt
-echo "What style of trailing commas do you want to enforce with Prettier?"
-echo -e "${YELLOW}>>>>> See https://prettier.io/docs/en/options.html#trailing-commas for more details.${NC}"
-select trailing_comma_pref in "none" "es5" "all"; do
-  case $trailing_comma_pref in
-    none ) break;;
-    es5 ) break;;
-    all ) break;;
-  esac
-done
+# echo "What style of trailing commas do you want to enforce with Prettier?"
+# echo -e "${YELLOW}>>>>> See https://prettier.io/docs/en/options.html#trailing-commas for more details.${NC}"
+# select trailing_comma_pref in "none" "es5" "all"; do
+#   case $trailing_comma_pref in
+#     none ) break;;
+#     es5 ) break;;
+#     all ) break;;
+#   esac
+# done
 echo
 
 # Checks for existing prettierrc files
@@ -161,7 +163,7 @@ else
   echo ${config_opening}'
   "printWidth": '${max_len_val}',
   "singleQuote": true,
-  "trailingComma": "'${trailing_comma_pref}'"
+  "trailingComma": "es5"
 }' >> .prettierrc${config_extension}
 fi
 
