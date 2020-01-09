@@ -53,7 +53,7 @@ Once files are created, you may edit to your liking.
 ```
 {
 "extends": [
-    "airbnb",
+    "airbnb/base",
     "plugin:prettier/recommended"
   ],
   "env": {
