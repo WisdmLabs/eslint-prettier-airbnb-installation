@@ -124,7 +124,7 @@ else
 
   echo ${config_opening}'
   "extends": [
-    "airbnb",
+    "airbnb/base",
     "plugin:prettier/recommended"
   ],
   "env": {
